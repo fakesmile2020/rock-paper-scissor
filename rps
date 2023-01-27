@@ -1,0 +1,51 @@
+import random
+import tkinter as tk
+
+ai_move = ''
+
+def check_winner(player_move):
+    global ai_move
+    ai_move = random.choice(["rock", "paper", "scissors"])
+    if player_move == ai_move:
+        winner.config(text="AI choose " + ai_move + " It's a tie!")
+    elif (player_move == "rock" and ai_move == "scissors") or (
+        player_move == "paper" and ai_move == "rock"
+    ) or (player_move == "scissors" and ai_move == "paper"):
+        winner.config(text= "AI choose " + ai_move + " You won!")
+    else:
+        winner.config(text= "AI choose " + ai_move + " AI won!")
+
+
+
+
+root = tk.Tk()
+
+
+rock_image = tk.PhotoImage(file="C:\\Users\\Ahljen\\Desktop\\PROJECTS\\phyton projects\\rock paper scissor\\rock.png")
+def rock_button_clicked():
+    check_winner("rock")
+rock_button = tk.Button(root, image=rock_image, command=rock_button_clicked)
+
+
+
+paper_image = tk.PhotoImage(file="C:\\Users\\Ahljen\\Desktop\\PROJECTS\\phyton projects\\rock paper scissor\\paper.png")
+def paper_button_clicked():
+    check_winner("paper")
+paper_button = tk.Button(root, image=paper_image, command=paper_button_clicked)
+
+
+scissors_image = tk.PhotoImage(file="C:\\Users\\Ahljen\\Desktop\\PROJECTS\\phyton projects\\rock paper scissor\\scissors.png")
+def scissors_button_clicked():
+    check_winner("scissors")
+scissors_button = tk.Button(root, image=scissors_image, command=scissors_button_clicked)
+
+
+winner = tk.Label(root)
+
+rock_button.grid(row=0, column=0)
+paper_button.grid(row=0, column=1)
+scissors_button.grid(row=0, column=2)
+winner.grid(row=1, column=0, columnspan=3)
+
+
+root.mainloop()
